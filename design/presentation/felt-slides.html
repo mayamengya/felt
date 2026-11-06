@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Felt: intro slides</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap">
+<style>
+  :root { --oat:#EFE6D8; --cream:#F8F2E8; --plum:#6B2D5C; --ink:#2E2430; --muted:#5E5262; --moss:#8A9A78; --clay:#C98B6B; --sand:#D9B77E; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; height:100%; background:var(--oat); color:var(--ink); font-family:Inter, system-ui, sans-serif; overflow:hidden; }
+  .grain { position:fixed; inset:0; pointer-events:none; opacity:.35; mix-blend-mode:multiply; z-index:0; }
+  .slide { position:absolute; inset:0; display:none; align-items:center; justify-content:center; padding:6vw; z-index:1; }
+  .slide.on { display:flex; animation:in .5s ease-out both; }
+  @keyframes in { from { opacity:0; transform:translateY(8px);} to { opacity:1; transform:none; } }
+  .piece { background:var(--cream); border-radius:36px; padding:5vw 6vw; max-width:1200px; width:100%; outline:3px dashed #D9C8B8; outline-offset:-16px; box-shadow:0 6px 0 #E0D2C2, 0 30px 60px -30px rgba(107,45,92,.35); }
+  .serif { font-family:Fraunces, Georgia, serif; }
+  .quote { font-family:Fraunces, Georgia, serif; font-size:clamp(28px,3.6vw,56px); line-height:1.25; font-style:italic; }
+  .cite { margin-top:2.2vw; font-size:clamp(14px,1.3vw,20px); color:var(--muted); letter-spacing:.04em; }
+  .big { font-family:Fraunces, Georgia, serif; font-size:clamp(40px,6vw,96px); line-height:1.05; letter-spacing:-.02em; }
+  .plum { color:var(--plum); }
+  .label { font-size:clamp(12px,1vw,16px); font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--plum); margin-bottom:1.6vw; }
+  .stats { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:2vw; margin-top:1vw; }
+  .stat { background:var(--oat); border-radius:28px; padding:2.4vw; box-shadow:0 4px 0 #DCCBB6; }
+  .stat .n { font-family:Fraunces, Georgia, serif; font-size:clamp(34px,4.4vw,72px); color:var(--plum); line-height:1; }
+  .stat .t { margin-top:1vw; font-size:clamp(14px,1.35vw,21px); line-height:1.4; }
+  .src { margin-top:2vw; font-size:clamp(12px,1vw,15px); color:var(--muted); }
+  .two { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:2.4vw; }
+  .pills { display:flex; flex-wrap:wrap; gap:1.2vw; margin-top:2vw; }
+  .pill { font-family:Fraunces, Georgia, serif; font-style:italic; font-size:clamp(22px,2.6vw,42px); padding:1vw 2vw; border-radius:999px; background:var(--moss); color:#1F2A18; box-shadow:0 4px 0 #6F7F5E; outline:2px dashed rgba(255,255,255,.6); outline-offset:-8px; }
+  .pill.c { background:var(--clay); color:#2E1A10; box-shadow:0 4px 0 #A86E52; }
+  .pill.s { background:var(--sand); color:#3A2B10; box-shadow:0 4px 0 #B8955A; }
+  .logo { font-family:Fraunces, Georgia, serif; font-weight:600; color:var(--plum); font-size:clamp(56px,8vw,140px); letter-spacing:-.03em; }
+  .tag { font-family:Fraunces, Georgia, serif; font-size:clamp(24px,2.8vw,46px); line-height:1.3; margin-top:1.5vw; }
+  .center { text-align:center; }
+  .hint { position:fixed; bottom:16px; right:22px; font-size:12px; color:var(--muted); z-index:2; opacity:.7; }
+</style>
+</head>
+<body>
+<svg class="grain" aria-hidden="true"><filter id="f"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 .55  0 0 0 0 .45  0 0 0 0 .38  0 0 0 .5 0"/></filter><rect width="100%" height="100%" filter="url(#f)"/></svg>
+
+<section class="slide on"><div class="piece">
+  <div class="quote">“English, which can express the thoughts of Hamlet and the tragedy of Lear, has no words for the shiver and the headache.”</div>
+  <div class="cite">VIRGINIA WOOLF · <span style="font-style:italic">ON BEING ILL</span> · 1926</div>
+</div></section>
+
+<section class="slide"><div class="piece">
+  <div class="big">Pain has no blood test.<br><span class="plum" style="font-style:italic">It travels through words.</span></div>
+</div></section>
+
+<section class="slide"><div class="piece">
+  <div class="label">When women use those words</div>
+  <div class="stats">
+    <div class="stat"><div class="n">Less</div><div class="t">likely to be prescribed pain relief than men, even at the same pain score</div></div>
+    <div class="stat"><div class="n">10%</div><div class="t">less likely to have their pain score recorded at all</div></div>
+    <div class="stat"><div class="n">30 min</div><div class="t">longer, on average, in the emergency department</div></div>
+  </div>
+  <div class="src">Guzikevits et al., “Sex bias in pain management decisions,” PNAS, 2024 · 21,851 emergency department discharge notes, US and Israel</div>
+</div></section>
+
+<section class="slide"><div class="piece two" style="align-items:center">
+  <div>
+    <div class="label">How medicine was built</div>
+    <div class="big plum">1993</div>
+    <div class="tag" style="font-size:clamp(18px,1.8vw,28px)">The first year US law required women to be included in NIH-funded clinical research.</div>
+    <div class="src">NIH Revitalization Act of 1993</div>
+  </div>
+  <div>
+    <div class="label">Across a language barrier</div>
+    <div class="big plum">49% <span style="color:var(--muted);font-size:.5em">vs</span> 30%</div>
+    <div class="tag" style="font-size:clamp(18px,1.8vw,28px)">of hospital adverse events caused physical harm for patients with limited English, versus English speakers.</div>
+    <div class="src">Divi et al., Int J Qual Health Care, 2007 · six US hospitals</div>
+  </div>
+</div></section>
+
+<section class="slide"><div class="piece">
+  <div class="label">How we actually describe pain</div>
+  <div class="big">We already speak <span class="plum" style="font-style:italic">like poets.</span></div>
+  <div class="pills">
+    <span class="pill">“like barbed wire”</span>
+    <span class="pill c">“like a fist clenching”</span>
+    <span class="pill s">“like a hot knife”</span>
+  </div>
+  <div class="src">Pain is most often described through metaphor, which helps the listener feel it too. Semino, 2010; Munday et al.</div>
+</div></section>
+
+<section class="slide"><div class="piece center">
+  <div class="logo">felt</div>
+  <div class="tag">Understand your body. Find your words. <span class="plum" style="font-style:italic">Be heard.</span></div>
+</div></section>
+
+<section class="slide"><div class="piece center">
+  <div class="logo" style="font-size:clamp(40px,5vw,84px)">felt</div>
+  <div class="quote" style="margin-top:1vw">Words for the shiver and the headache.</div>
+  <div class="cite">Understand your body. Find your words. Be heard.</div>
+</div></section>
+
+<div class="hint">← → to move · F for full screen</div>
+<script>
+  const s=[...document.querySelectorAll('.slide')]; let i=0;
+  const go=n=>{ s[i].classList.remove('on'); i=Math.max(0,Math.min(s.length-1,n)); s[i].classList.add('on'); };
+  addEventListener('keydown',e=>{ if(['ArrowRight',' ','PageDown'].includes(e.key)) go(i+1); if(['ArrowLeft','PageUp'].includes(e.key)) go(i-1); if(e.key==='f') document.documentElement.requestFullscreen?.(); });
+  addEventListener('click',()=>go(i+1));
+</script>
+</body>
+</html>

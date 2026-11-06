@@ -8,7 +8,20 @@ Built solo for the **Code with Claude: Women in AI Hackathon** (San Francisco, N
 
 **Demo video:** [ADD LINK]
 
-<!-- Screenshots: add 2–3 here (welcome, "It feels like…", final brief) -->
+<table>
+  <tr>
+    <td align="center"><img src="design/presentation/app-01.png" alt="felt welcome screen: a felt mascot holding a heart on felt hills, with the tagline 'from felt to said' and a Start button" width="260"></td>
+    <td align="center"><img src="design/presentation/app-02.png" alt="Step 3: 'What does it feel like?' with the 'It feels like…' box and a button to find words that match her image" width="260"></td>
+    <td align="center"><img src="design/presentation/app-03.png" alt="The final brief, with source tags (Her words, She chose, Background info) and questions to ask" width="260"></td>
+  </tr>
+  <tr>
+    <td align="center"><sub>Welcome</sub></td>
+    <td align="center"><sub>"It feels like…"</sub></td>
+    <td align="center"><sub>Her brief, with source tags</sub></td>
+  </tr>
+</table>
+
+Slides: [`design/presentation/felt-slides.html`](design/presentation/felt-slides.html)
 
 ---
 
