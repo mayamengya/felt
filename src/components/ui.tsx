@@ -116,19 +116,77 @@ export function SourceTag({ source }: { source: Source }) {
   return <span className={`inline-block shrink-0 rounded-full px-2 py-0.5 text-[0.7rem] font-semibold tracking-wide uppercase ${t.cls}`}>{t.label}</span>;
 }
 
-export function NavBar({ onBack, onNext, nextLabel = "Next", nextDisabled }: { onBack?: () => void; onNext: () => void; nextLabel?: string; nextDisabled?: boolean }) {
+/**
+ * One app screen: header + progress at the top, a scroll area INSIDE the step,
+ * and a fixed footer. The page itself never scrolls.
+ */
+export function Screen({
+  progress,
+  label,
+  title,
+  why,
+  children,
+  footer,
+  scroll = true,
+}: {
+  progress?: number; // 0..1
+  label?: string;
+  title?: string;
+  why?: string;
+  children: ReactNode;
+  footer?: ReactNode;
+  scroll?: boolean;
+}) {
   return (
-    <div className="mt-8 flex items-center justify-between gap-3">
+    <div className="flex h-full flex-col">
+      {title ? (
+        <header className="shrink-0 px-5 pt-3 pb-2">
+          {progress !== undefined ? (
+            <div className="no-print mb-3 flex items-center gap-3">
+              <div className="progress flex-1" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(progress * 100)}>
+                <span style={{ width: `${Math.max(4, progress * 100)}%` }} />
+              </div>
+              {label ? <span className="text-xs font-semibold whitespace-nowrap text-quiet">{label}</span> : null}
+            </div>
+          ) : null}
+          <h1 className="font-serif text-[1.6rem] leading-tight font-semibold text-ink">{title}</h1>
+          {why ? <Why text={why} /> : null}
+        </header>
+      ) : null}
+      <div className={`min-h-0 flex-1 px-5 pt-2 pb-3 ${scroll ? "step-scroll" : "flex flex-col"}`}>{children}</div>
+      {footer ? <footer className="no-print shrink-0 px-4 pt-2 pb-[max(14px,env(safe-area-inset-bottom))]">{footer}</footer> : null}
+    </div>
+  );
+}
+
+export function NavBar({
+  onBack,
+  onNext,
+  nextLabel = "Next",
+  nextDisabled,
+  middle,
+}: {
+  onBack?: () => void;
+  onNext?: () => void;
+  nextLabel?: string;
+  nextDisabled?: boolean;
+  middle?: ReactNode;
+}) {
+  return (
+    <div className="flex items-center justify-between gap-2">
       {onBack ? (
-        <button type="button" className="btn btn-ghost" onClick={onBack}>
-          Back
+        <button type="button" className="btn btn-ghost !h-12 !w-12 !px-0 text-xl" onClick={onBack} aria-label="Back">
+          ←
         </button>
       ) : (
-        <span />
+        <span className="w-12" />
       )}
-      <button type="button" className="btn btn-primary" onClick={onNext} disabled={nextDisabled}>
-        {nextLabel}
-      </button>
+      <div className="flex min-w-0 flex-1 justify-center">{middle}</div>
+      {onNext ? (
+        <button type="button" className="btn btn-primary shrink-0" onClick={onNext} disabled={nextDisabled}>
+          {nextLabel}
+        </button>
+      ) : null}
     </div>
   );
 }

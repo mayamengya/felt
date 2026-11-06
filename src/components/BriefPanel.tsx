@@ -1,5 +1,5 @@
 "use client";
-// Live brief: a sticky bottom tab ("Your brief · N") that opens a slide-up sheet.
+// Live brief: a pill in the footer ("Your brief · N") that opens a slide-up sheet inside the app.
 // Built in code from her answers (buildBrief), never by AI.
 import { useEffect, useState } from "react";
 import type { BriefSection } from "@/lib/brief";
@@ -17,37 +17,39 @@ export function BriefPanel({ sections }: { sections: BriefSection[] }) {
   }, [open]);
 
   return (
-    <div className="no-print">
-      <div className="fixed inset-x-0 bottom-0 z-30 mx-auto max-w-[430px] px-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
-        <button
-          type="button"
-          onClick={() => setOpen(true)}
-          aria-expanded={open}
-          className={`btn piece stitch flex w-full items-center justify-between !rounded-3xl px-6 py-3 text-left`}
-        >
-          <span className="font-serif text-lg font-semibold">
-            Your brief <span key={count} className="stitch-in inline-block text-plum">· {count}</span>
-          </span>
-          <span className="text-sm text-quiet">{count ? "Tap to read" : "Builds as you go"}</span>
-        </button>
-      </div>
+    <>
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        aria-expanded={open}
+        className="chip stitch flex !min-h-12 items-center gap-2 !rounded-full !px-4 font-serif font-semibold"
+      >
+        Your brief
+        <span key={count} className="stitch-in inline-grid h-7 min-w-7 place-items-center rounded-full bg-plum px-1.5 font-sans text-sm text-white">
+          {count}
+        </span>
+      </button>
 
       {open ? (
-        <div className="fixed inset-0 z-40" role="dialog" aria-modal="true" aria-label="Your brief so far">
+        <div className="absolute inset-0 z-40" role="dialog" aria-modal="true" aria-label="Your brief so far">
           <button type="button" aria-label="Close brief" className="absolute inset-0 bg-ink/40" onClick={() => setOpen(false)} />
-          <div className="sheet-up felt-bg absolute inset-x-0 bottom-0 mx-auto max-h-[82vh] max-w-[430px] overflow-y-auto rounded-t-[28px] p-4 pb-8 shadow-2xl">
-            <div className="mx-auto mb-3 h-1.5 w-12 rounded-full bg-brown/40" />
-            <div className="mb-3 flex items-center justify-between">
-              <h2 className="font-serif text-2xl font-semibold">Your brief so far</h2>
-              <button type="button" className="btn btn-ghost !min-h-11 !px-4" onClick={() => setOpen(false)}>
-                Close
-              </button>
+          <div className="sheet-up felt-bg absolute inset-x-0 bottom-0 flex max-h-[85%] flex-col rounded-t-[28px] shadow-2xl">
+            <div className="shrink-0 px-4 pt-3">
+              <div className="mx-auto mb-3 h-1.5 w-12 rounded-full bg-brown/40" />
+              <div className="mb-3 flex items-center justify-between">
+                <h2 className="font-serif text-2xl font-semibold">Your brief so far</h2>
+                <button type="button" className="btn btn-ghost !min-h-11 !px-4" onClick={() => setOpen(false)}>
+                  Close
+                </button>
+              </div>
             </div>
-            <BriefLines sections={sections} />
+            <div className="step-scroll min-h-0 flex-1 px-4 pb-6">
+              <BriefLines sections={sections} />
+            </div>
           </div>
         </div>
       ) : null}
-    </div>
+    </>
   );
 }
 

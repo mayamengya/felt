@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { WHY } from "@/content/steps";
 import type { Entry, FollowUpQuestion } from "@/lib/types";
-import { FeltLoading } from "./FeltWoman";
+import { StitchLoader } from "./BodyFigure";
 import { Card, ChipGroup, TextBox, Why } from "./ui";
 
 type Answer = { chip: string; text: string };
@@ -33,7 +33,7 @@ export function FollowUpsStep({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (!questions) return <FeltLoading text="Thinking about what a clinician might ask next…" />;
+  if (!questions) return <StitchLoader kind="followups" />;
   if (!questions.length) return <p className="text-quiet">No extra questions right now. You can go straight to your brief.</p>;
   return <FollowUpCards entry={entry} update={update} questions={questions} />;
 }
@@ -69,7 +69,7 @@ function FollowUpCards({ entry, update, questions }: { entry: Entry; update: (p:
       {questions.map((q) => {
         const a = answers[q.id] ?? { chip: "", text: "" };
         return (
-          <Card key={q.id} className="stitch-in">
+          <Card key={q.id} className="stitch-in !p-4">
             <h2 className="font-serif text-xl leading-snug font-semibold">{q.text}</h2>
             <Why text={q.whyAsk} />
             <ChipGroup options={q.options} value={a.chip} onChange={(v) => set(q, { ...a, chip: v as string })} />

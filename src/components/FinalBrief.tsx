@@ -5,24 +5,35 @@ import { useState } from "react";
 import { QUESTIONS_TO_ASK, UNHEARD_PHRASES } from "@/content/steps";
 import { briefToText, type BriefSection } from "@/lib/brief";
 import type { Source } from "@/lib/types";
-import { SourceTag } from "./ui";
+import { NavBar, Screen, SourceTag } from "./ui";
 
 export function FinalBrief({ sections, onBack, onRestart }: { sections: BriefSection[]; onBack: () => void; onRestart: () => void }) {
   // Snapshot the text on arrival; her edits live here.
   const [text, setText] = useState<Record<string, string>>(() => briefToText(sections));
 
   return (
-    <div>
-      <header className="mb-5">
-        <p className="no-print mb-2 text-sm font-medium text-quiet">Ready for your appointment</p>
-        <h1 className="font-serif text-[1.75rem] leading-tight font-semibold">Your brief</h1>
-        <p className="mt-2 text-sm text-quiet">
-          Every line is yours. Tap any section to edit it. Tags show where each line came from: <SourceTag source="her" /> <SourceTag source="chose" />{" "}
-          <SourceTag source="info" />
-        </p>
-      </header>
+    <Screen
+      title="Your brief"
+      progress={1}
+      label="Ready"
+      footer={
+        <NavBar
+          onBack={onBack}
+          middle={
+            <button type="button" className="btn btn-ghost !px-4 text-sm" onClick={onRestart}>
+              Start over
+            </button>
+          }
+          onNext={() => window.print()}
+          nextLabel="Print / PDF"
+        />
+      }
+    >
+      <p className="no-print mb-3 text-sm text-quiet">
+        Every line is yours. Tap a section to edit it. <SourceTag source="her" /> <SourceTag source="chose" /> <SourceTag source="info" />
+      </p>
 
-      <div className="piece stitch space-y-5 p-5">
+      <div className="piece stitch space-y-4 p-5">
         {sections.length === 0 ? <p className="text-quiet">You haven&apos;t added anything yet. Go back and answer a few steps.</p> : null}
         {sections.map((sec) => {
           const sources = [...new Set(sec.lines.map((l) => l.source))] as Source[];
@@ -75,25 +86,9 @@ export function FinalBrief({ sections, onBack, onRestart }: { sections: BriefSec
           </ul>
         </section>
 
-        <p className="text-xs leading-snug text-quiet">
-          Prepared with Felt from her own answers. This is a description to support the conversation, not a diagnosis.
-        </p>
+        <p className="text-xs leading-snug text-quiet">Prepared with Felt from her own answers. This is a description to support the conversation, not a diagnosis.</p>
       </div>
-
-      <div className="no-print mt-6 flex flex-col gap-3">
-        <button type="button" className="btn btn-primary w-full" onClick={() => window.print()}>
-          Print or save as PDF
-        </button>
-        <div className="flex justify-between gap-3">
-          <button type="button" className="btn btn-ghost" onClick={onBack}>
-            Back
-          </button>
-          <button type="button" className="btn btn-ghost" onClick={onRestart}>
-            Start over
-          </button>
-        </div>
-        <p className="text-center text-sm text-quiet">Nothing is saved. Print or save it before you close this page.</p>
-      </div>
-    </div>
+      <p className="no-print mt-3 text-center text-sm text-quiet">Nothing is saved. Print or save it before you close this page.</p>
+    </Screen>
   );
 }

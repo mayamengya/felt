@@ -10,7 +10,7 @@ export function RedFlagScreen({ flag, onContinue }: { flag: Flag; onContinue: ()
   }, []);
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-white" role="alertdialog" aria-modal="true" aria-labelledby="flag-title" aria-describedby="flag-msg">
+    <div className="absolute inset-0 z-50 overflow-y-auto bg-white" role="alertdialog" aria-modal="true" aria-labelledby="flag-title" aria-describedby="flag-msg">
       <div className="mx-auto flex min-h-full max-w-[430px] flex-col justify-center px-6 py-10">
         <h1 id="flag-title" ref={heading} tabIndex={-1} className="text-2xl leading-tight font-semibold text-ink outline-none">
           {flag.title}
