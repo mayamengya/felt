@@ -1,6 +1,6 @@
 # felt
 
-**Understand your body. Find your words. Be heard.**
+**from felt to said**
 
 felt is a phone-first web app that helps women turn a bodily feeling that's hard to describe into a clear, one-page brief for their next medical appointment, in their own words, in about ten minutes.
 

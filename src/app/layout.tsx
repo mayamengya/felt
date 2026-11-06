@@ -6,7 +6,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "felt: find your words",
-  description: "Understand your body. Find your words. Be heard.",
+  description: "from felt to said",
 };
 
 export const viewport: Viewport = {
