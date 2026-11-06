@@ -175,7 +175,7 @@ function Welcome({ onStart }: { onStart: () => void }) {
           <Mascot size={190} className="bob max-h-full w-auto" />
         </div>
         <div className="piece-soft p-5 text-center">
-          <h1 className="font-serif text-5xl font-semibold text-plum">Felt</h1>
+          <h1 className="font-serif text-5xl font-semibold text-plum">felt</h1>
           <p className="mt-1 font-serif text-lg leading-snug">Understand your body. Find your words. Be heard.</p>
           <p className="mt-3 text-[0.95rem] leading-snug">
             In about <strong>10 minutes</strong>, turn a feeling that&apos;s hard to describe into a clear, one-page brief for your next appointment.

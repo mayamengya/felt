@@ -37,7 +37,7 @@ export function RedFlagScreen({ flag, onContinue }: { flag: Flag; onContinue: ()
             I understand. Continue preparing my brief
           </button>
         </div>
-        <p className="mt-6 text-sm text-quiet">Felt can&apos;t assess how urgent something is. If you&apos;re unsure, it&apos;s okay to get checked.</p>
+        <p className="mt-6 text-sm text-quiet">felt can&apos;t assess how urgent something is. If you&apos;re unsure, it&apos;s okay to get checked.</p>
       </div>
     </div>
   );

@@ -1,8 +1,8 @@
-# Felt
+# felt
 
 **Understand your body. Find your words. Be heard.**
 
-Felt is a phone-first web app that helps women turn a bodily feeling that's hard to describe into a clear, one-page brief for their next medical appointment, in their own words, in about ten minutes.
+felt is a phone-first web app that helps women turn a bodily feeling that's hard to describe into a clear, one-page brief for their next medical appointment, in their own words, in about ten minutes.
 
 Built solo for the **Code with Claude: Women in AI Hackathon** (San Francisco, November 6, 2026).
 
@@ -29,7 +29,7 @@ So women walk into stressful, ten-minute appointments with symptoms that are har
 
 When people describe pain, they don't reach for medical terms. They reach for comparisons, the way poets do: "like barbed wire", "like a fist clenching". Pain-language research shows this isn't vague. It's precise. Metaphors drawn from physical causes (sharp objects, pressure, heat, movement) help the listener partly feel what's being described. *(Semino, 2010; Munday et al.)*
 
-Felt starts from *her* image and builds the bridge to the language a clinician uses.
+felt starts from *her* image and builds the bridge to the language a clinician uses.
 
 ## How it works
 
@@ -50,7 +50,7 @@ Felt starts from *her* image and builds the bridge to the language a clinician u
 
 ## What makes it different
 
-| | Felt | Typical health AI |
+| | felt | Typical health AI |
 |---|---|---|
 | Goal | Help her **say** what she feels | Tell her what it **might be** |
 | Starting point | Her own words and images | A symptom checklist |
@@ -81,7 +81,7 @@ Both use forced tool use for structured JSON, are limited to fixed vocabularies 
 
   Self-harm language shows the 988 crisis line.
 - **Never puts words in her mouth.** Nothing is pre-selected, "None of these fit" is always offered, and her original words are always shown.
-- **Her data stays hers.** At a time when health data, especially reproductive health data, can be collected, sold or used against you, Felt keeps nothing:
+- **Her data stays hers.** At a time when health data, especially reproductive health data, can be collected, sold or used against you, felt keeps nothing:
   - no account
   - no database
   - no analytics
@@ -92,7 +92,7 @@ Both use forced tool use for structured JSON, are limited to fixed vocabularies 
 
 ## Design
 
-Felt leans into its name. The interface looks like felt: a soft fibre texture, cut-felt pieces, stitched seams and a felt figure, in earthy colours with plum as the accent. It's warm and handmade, but grown-up, because this is a serious moment in someone's life.
+felt leans into its name. The interface looks like felt: a soft fibre texture, cut-felt pieces, stitched seams and a felt figure, in earthy colours with plum as the accent. It's warm and handmade, but grown-up, because this is a serious moment in someone's life.
 
 ## Run it locally
 
@@ -122,7 +122,7 @@ Open http://localhost:3000. The app is designed for phone width, so use your bro
 - **A shared vocabulary for clinicians.** The same image-based words could be used to teach medical communication from the patient's side.
 - **Validation** of the content and word anchors with clinicians and patients.
 
-Felt won't fix the healthcare system. But it changes what walks into the room: a woman who understands her body, has words for it, and has her experience on the record.
+felt won't fix the healthcare system. But it changes what walks into the room: a woman who understands her body, has words for it, and has her experience on the record.
 
 ## Sources
 
@@ -137,4 +137,4 @@ Felt won't fix the healthcare system. But it changes what walks into the room: a
 
 ---
 
-*Felt is a hackathon prototype and not a medical device. It does not provide medical advice. If you think you may have an emergency, call 911.*
+*felt is a hackathon prototype and not a medical device. It does not provide medical advice. If you think you may have an emergency, call 911.*

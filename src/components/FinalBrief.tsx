@@ -86,7 +86,7 @@ export function FinalBrief({ sections, onBack, onRestart }: { sections: BriefSec
           </ul>
         </section>
 
-        <p className="text-xs leading-snug text-quiet">Prepared with Felt from her own answers. This is a description to support the conversation, not a diagnosis.</p>
+        <p className="text-xs leading-snug text-quiet">Prepared with felt from her own answers. This is a description to support the conversation, not a diagnosis.</p>
       </div>
       <p className="no-print mt-3 text-center text-sm text-quiet">Nothing is saved. Print or save it before you close this page.</p>
     </Screen>

@@ -5,7 +5,7 @@ import "@fontsource-variable/inter";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Felt: find your words",
+  title: "felt: find your words",
   description: "Understand your body. Find your words. Be heard.",
 };
 
