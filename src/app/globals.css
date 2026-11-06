@@ -46,6 +46,26 @@ body {
   outline-offset: -8px;
 }
 
+/* Soft felt card (no stitching), for the welcome card */
+.piece-soft {
+  background: var(--color-cream);
+  border-radius: 30px;
+  box-shadow: inset 0 1px 0 #fff, 0 4px 0 var(--color-cream-dark), 0 18px 36px -16px rgb(46 36 48 / 0.4);
+}
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1.5deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1.5deg);
+  }
+}
+.bob {
+  animation: bob 3.2s ease-in-out infinite;
+  transform-origin: 50% 100%;
+}
+
 /* Buttons */
 .btn {
   min-height: 48px;
@@ -58,41 +78,41 @@ body {
   transform: translateY(2px);
 }
 .btn-primary {
-  background: var(--color-plum);
+  background: linear-gradient(180deg, #7d3a6c 0%, var(--color-plum) 55%, #5f2752 100%);
   color: #fff;
-  box-shadow: 0 3px 0 var(--color-plum-dark);
-  outline: 2px dashed rgb(255 255 255 / 0.45);
-  outline-offset: -6px;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.22), inset 0 -2px 0 rgb(0 0 0 / 0.12), 0 4px 0 var(--color-plum-dark),
+    0 10px 20px -8px rgb(74 31 64 / 0.55);
 }
 .btn-primary:active {
-  box-shadow: 0 1px 0 var(--color-plum-dark);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.2), 0 1px 0 var(--color-plum-dark), 0 4px 10px -6px rgb(74 31 64 / 0.5);
 }
 .btn-primary:disabled {
   opacity: 0.5;
 }
 .btn-ghost {
-  background: var(--color-cream);
+  background: linear-gradient(180deg, #fffaf3, var(--color-cream));
   color: var(--color-ink);
-  box-shadow: 0 3px 0 var(--color-cream-dark);
+  box-shadow: inset 0 1px 0 #fff, 0 3px 0 var(--color-cream-dark), 0 8px 16px -10px rgb(46 36 48 / 0.35);
 }
 
 /* Chips: selected looks like a sewn-on plum patch. */
 .chip {
   min-height: 44px;
-  border-radius: 17px 14px 18px 15px / 15px 18px 14px 17px;
-  padding: 0.55rem 0.95rem;
-  background: var(--color-cream);
-  box-shadow: 0 2px 0 var(--color-cream-dark);
+  border-radius: 999px;
+  padding: 0.55rem 1rem;
+  background: linear-gradient(180deg, #fffaf3, var(--color-cream));
+  box-shadow: inset 0 1px 0 #fff, 0 2px 0 var(--color-cream-dark), 0 6px 12px -8px rgb(46 36 48 / 0.3);
   text-align: left;
-  transition: transform 200ms ease, background 200ms ease, color 200ms ease;
+  transition: transform 200ms var(--spring), background 200ms ease, color 200ms ease, box-shadow 200ms ease;
+}
+.chip:active {
+  transform: scale(0.97);
 }
 .chip[aria-pressed="true"],
 .chip[aria-checked="true"] {
-  background: var(--color-plum);
+  background: linear-gradient(180deg, #7d3a6c, var(--color-plum));
   color: #fff;
-  box-shadow: 0 3px 0 var(--color-plum-dark);
-  outline: 1.5px dashed rgb(255 255 255 / 0.6);
-  outline-offset: -5px;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.2), 0 3px 0 var(--color-plum-dark), 0 8px 14px -8px rgb(74 31 64 / 0.6);
   transform: translateY(-1px);
 }
 

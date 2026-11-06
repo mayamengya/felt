@@ -3,6 +3,7 @@
 // Shared by the welcome screen (hero), loading moments (mini) and the body map.
 // viewBox 0 0 200 400. x < 100 is HER RIGHT side (viewer's left).
 import { useEffect, useId, useState } from "react";
+import { Mascot } from "./Mascot";
 
 export const VB = { w: 200, h: 400 };
 
@@ -99,7 +100,7 @@ export function StitchLoader({ kind }: { kind: "simile" | "followups" }) {
   }, [msgs.length]);
   return (
     <div className="piece stitch-in flex items-center gap-4 p-4" role="status" aria-live="polite">
-      <FeltWomanFigure height={84} className="sway shrink-0" />
+      <Mascot size={70} className="sway shrink-0" />
       <div className="min-w-0 flex-1">
         <p key={i} className="stitch-in font-serif text-lg leading-snug">
           {msgs[i]}

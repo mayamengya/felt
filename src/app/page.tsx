@@ -2,12 +2,12 @@
 // The guided flow as app screens. One Entry in state; brief = buildBrief(entry).
 // 6 steps (some split into short screens so each fits 100dvh), then the brief.
 import { useMemo, useState, type ReactNode } from "react";
-import { FeltWomanFigure } from "@/components/BodyFigure";
 import { BodyMap } from "@/components/BodyMap";
 import { BriefPanel } from "@/components/BriefPanel";
 import { OtherStep, PatternsStep, SeverityStep, WhenStep } from "@/components/DetailsStep";
 import { FinalBrief } from "@/components/FinalBrief";
 import { FollowUpsStep } from "@/components/FollowUpsStep";
+import { FeltScene, Mascot } from "@/components/Mascot";
 import { RedFlagScreen } from "@/components/RedFlagScreen";
 import { SimileStep, WordPicker } from "@/components/SensationStep";
 import { ChipGroup, NavBar, Screen, TextBox } from "@/components/ui";
@@ -166,35 +166,27 @@ export default function Home() {
 }
 
 function Welcome({ onStart }: { onStart: () => void }) {
+  // Full-screen felt scene; all text sits on a flat cream card.
   return (
-    <Screen
-      scroll={false}
-      footer={
-        <div>
-          <button type="button" className="btn btn-primary w-full text-lg" onClick={onStart}>
-            Start
-          </button>
-          <p className="mt-3 text-center text-sm text-ink">If this feels urgent, call 911 or go to your nearest emergency room.</p>
+    <div className="relative h-full overflow-hidden">
+      <FeltScene />
+      <div className="relative flex h-full flex-col px-5 pb-[max(16px,env(safe-area-inset-bottom))]">
+        <div className="flex min-h-0 flex-1 items-end justify-center pb-2">
+          <Mascot size={190} className="bob max-h-full w-auto" />
         </div>
-      }
-    >
-      <div className="flex min-h-0 flex-1 flex-col items-center justify-center text-center">
-        <div className="min-h-0 flex-1 basis-0">
-          <FeltWomanFigure height={300} className="h-full max-h-[300px] w-auto" />
-        </div>
-        <h1 className="mt-3 font-serif text-5xl font-semibold text-plum">Felt</h1>
-        <p className="mt-2 font-serif text-xl leading-snug">
-          Understand your body.
-          <br />
-          Find your words. Be heard.
-        </p>
-        <div className="piece stitch mt-4 p-4 text-left">
-          <p className="leading-snug">
+        <div className="piece-soft p-5 text-center">
+          <h1 className="font-serif text-5xl font-semibold text-plum">Felt</h1>
+          <p className="mt-1 font-serif text-lg leading-snug">Understand your body. Find your words. Be heard.</p>
+          <p className="mt-3 text-[0.95rem] leading-snug">
             In about <strong>10 minutes</strong>, turn a feeling that&apos;s hard to describe into a clear, one-page brief for your next appointment.
           </p>
-          <p className="mt-2 text-sm leading-snug text-quiet">Nothing is saved. Your answers go to Claude only to suggest words and questions.</p>
+          <button type="button" className="btn btn-primary mt-4 w-full text-lg" onClick={onStart}>
+            Start
+          </button>
+          <p className="mt-3 text-xs leading-snug text-quiet">Nothing is saved. Your answers go to Claude only to suggest words and questions.</p>
+          <p className="mt-2 text-sm font-medium text-ink">If this feels urgent, call 911 or go to your nearest emergency room.</p>
         </div>
       </div>
-    </Screen>
+    </div>
   );
 }

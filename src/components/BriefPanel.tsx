@@ -22,7 +22,7 @@ export function BriefPanel({ sections }: { sections: BriefSection[] }) {
         type="button"
         onClick={() => setOpen(true)}
         aria-expanded={open}
-        className="chip stitch flex !min-h-12 items-center gap-2 !rounded-full !px-4 font-serif font-semibold"
+        className="chip flex !min-h-12 items-center gap-2 !rounded-full !px-4 font-serif font-semibold"
       >
         Your brief
         <span key={count} className="stitch-in inline-grid h-7 min-w-7 place-items-center rounded-full bg-plum px-1.5 font-sans text-sm text-white">

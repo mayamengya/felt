@@ -95,7 +95,7 @@ export function WordPicker({ entry, update }: Props) {
             aria-pressed={on}
             onClick={() => update({ sensations: toggleIn(entry, s.id) })}
             className={`rounded-3xl p-4 text-left transition ${
-              on ? "bg-plum text-white shadow-[0_3px_0_#4A1F40] outline-2 -outline-offset-[7px] outline-white/60 outline-dashed" : "piece"
+              on ? "bg-plum text-white shadow-[0_3px_0_#4A1F40]" : "piece"
             }`}
           >
             <span className="flex items-baseline justify-between gap-2">
