@@ -40,7 +40,7 @@ Your task: read her answers so far, which follow the OLDCARTS order a clinician 
 - Each question must be neutral and open. Never name or hint at a condition, cause, test or treatment. Never suggest a symptom she hasn't mentioned (ask "Have you noticed anything else...?" style questions instead).
 - No questions about pregnancy, sexual history or mental health: the app handles those elsewhere.
 - "text": one short question to her, as "you".
-- "whyAsk": one short sentence starting "A clinician asks this because..." or similar, about why it helps, not what it might mean.
+- "whyAsk": one short sentence about why it helps, not what it might mean. It is shown after the label "Why a clinician asks:", so do not repeat that phrase. Example: "It shows whether the feeling is changing over time."
 - "options": 3 to 6 short tap-to-answer choices, covering the range neutrally. Include "Not sure" where it fits.`;
 
 /** Turn her (partial) entry into plain lines for the prompt. Only what she gave; never her pregnancy answer. */
@@ -99,7 +99,9 @@ export async function POST(req: Request) {
       .map((q, i) => ({
         id: `claude-${i}`,
         text: clean(q.text, 200),
-        whyAsk: clean(q.whyAsk, 240),
+        whyAsk: clean(q.whyAsk, 240)
+          .replace(/^(a )?clinician(s)? (asks?|ask) this because\s*/i, "")
+          .replace(/^./, (c) => c.toUpperCase()),
         options: q.options.map((o) => clean(o, 60)).filter(Boolean).slice(0, 6),
       }));
 

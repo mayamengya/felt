@@ -1,26 +1,163 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Felt palette (design/notes.md). Plum is the only loud colour; moss = her words. */
+@theme {
+  --color-oat: #efe6d8; /* background felt */
+  --color-cream: #f8f2e8; /* raised felt pieces */
+  --color-cream-dark: #e4d8c6;
+  --color-moss: #8a9a78;
+  --color-moss-ink: #45553a; /* moss text, 4.5:1+ on moss-tint */
+  --color-moss-tint: #e3e9da;
+  --color-clay: #c98b6b;
+  --color-sand: #d9b77e;
+  --color-brown: #7a5c48;
+  --color-plum: #6b2d5c;
+  --color-plum-dark: #4a1f40;
+  --color-plum-tint: #f1e3ec;
+  --color-ink: #2e2430;
+  --color-quiet: #5e5262;
+
+  --font-serif: "Fraunces Variable", Georgia, serif;
+  --font-sans: "Inter Variable", system-ui, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html,
+body {
+  background-color: var(--color-oat);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Full-screen felt: fibre grain from feTurbulence, low opacity, behind everything. */
+.felt-bg {
+  background-color: var(--color-oat);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.27  0 0 0 0 0.2  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23f)' opacity='0.35'/></svg>");
+}
+
+/* A cut felt piece: flat cream, chunky radius, thick offset shadow, inset stitching. */
+.piece {
+  background: var(--color-cream);
+  border-radius: 24px;
+  box-shadow: 0 3px 0 var(--color-cream-dark), 0 8px 18px -10px rgb(46 36 48 / 0.25);
+}
+.stitch {
+  outline: 2px dashed rgb(122 92 72 / 0.35);
+  outline-offset: -8px;
+}
+
+/* Buttons */
+.btn {
+  min-height: 48px;
+  border-radius: 999px;
+  padding: 0 1.4rem;
+  font-weight: 600;
+  transition: transform 200ms ease, box-shadow 200ms ease, background 200ms ease;
+}
+.btn:active {
+  transform: translateY(2px);
+}
+.btn-primary {
+  background: var(--color-plum);
+  color: #fff;
+  box-shadow: 0 3px 0 var(--color-plum-dark);
+  outline: 2px dashed rgb(255 255 255 / 0.45);
+  outline-offset: -6px;
+}
+.btn-primary:active {
+  box-shadow: 0 1px 0 var(--color-plum-dark);
+}
+.btn-primary:disabled {
+  opacity: 0.5;
+}
+.btn-ghost {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  box-shadow: 0 3px 0 var(--color-cream-dark);
+}
+
+/* Chips: selected looks like a sewn-on plum patch. */
+.chip {
+  min-height: 44px;
+  border-radius: 16px;
+  padding: 0.55rem 0.95rem;
+  background: var(--color-cream);
+  box-shadow: 0 2px 0 var(--color-cream-dark);
+  text-align: left;
+  transition: transform 200ms ease, background 200ms ease, color 200ms ease;
+}
+.chip[aria-pressed="true"],
+.chip[aria-checked="true"] {
+  background: var(--color-plum);
+  color: #fff;
+  box-shadow: 0 3px 0 var(--color-plum-dark);
+  outline: 1.5px dashed rgb(255 255 255 / 0.6);
+  outline-offset: -5px;
+  transform: translateY(-1px);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-plum) !important;
+  outline-offset: 2px !important;
+}
+
+textarea,
+input[type="text"] {
+  field-sizing: content;
+}
+
+/* New brief lines "stitch in". */
+@keyframes stitch-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.stitch-in {
+  animation: stitch-in 320ms ease-out both;
+}
+
+@keyframes sheet-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: none;
+  }
+}
+.sheet-up {
+  animation: sheet-up 300ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Print: only the final brief, as plain readable text. */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  html,
+  body,
+  .felt-bg {
+    background: #fff !important;
+  }
+  .piece {
+    box-shadow: none !important;
+    outline: none !important;
+    border: 1px solid #ccc;
+  }
+  textarea {
+    border: none !important;
+    resize: none;
+  }
 }
