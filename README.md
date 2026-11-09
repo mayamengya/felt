@@ -6,8 +6,6 @@ felt is a phone-first web app that helps women turn a bodily feeling that's hard
 
 Built solo for the **Code with Claude: Women in AI Hackathon** (San Francisco, November 6, 2026).
 
-**Demo video:** [ADD LINK]
-
 <table>
   <tr>
     <td align="center"><img src="design/presentation/app-01.png" alt="felt welcome screen: a felt mascot holding a heart on felt hills, with the tagline 'from felt to said' and a Start button" width="260"></td>
